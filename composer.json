@@ -1,0 +1,14 @@
+{
+    "name": "rdx/symfony-mailer-demo",
+    "type": "project",
+    "require": {
+        "symfony/mailer": "^6.0",
+        "symfony/var-dumper": "^6.0"
+    },
+    "authors": [
+        {
+            "name": "Rudie Dirkx",
+            "email": "github@hotblocks.nl"
+        }
+    ]
+}
