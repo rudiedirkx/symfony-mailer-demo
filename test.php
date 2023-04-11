@@ -68,7 +68,7 @@ $transport = new GmailApiTransport(new Gmail($google));
 // dd($transport);
 
 // SMTP
-$dsn = sprintf('smtp://%s:%s@%s', urlencode(MAILBOX_USER), urlencode(MAILBOX_PASS), MAILBOX_HOST);
+// $dsn = sprintf('smtp://%s:%s@%s', urlencode(MAILBOX_USER), urlencode(MAILBOX_PASS), MAILBOX_HOST);
 // $transport = new EsmtpTransport(MAILBOX_HOST, 465);
 // $transport->setUsername(MAILBOX_USER);
 // $transport->setPassword(MAILBOX_PASS);
@@ -79,15 +79,18 @@ $dsn = sprintf('smtp://%s:%s@%s', urlencode(MAILBOX_USER), urlencode(MAILBOX_PAS
 // dd($transport);
 
 $mailer = new Mailer($transport);
-dd($mailer);
+// dd($mailer);
 
 $email = (new Email())
-	->from(new Address(MAILBOX_USER, "Sf User"))
-	->to(SEND_TO)
+	->from(new Address(MAIL_FROM ?: MAILBOX_USER, "Sf User"))
+	->sender(MAILBOX_USER)
+	->replyTo(sprintf('u%d@d%d.com', rand(), rand()))
+	->to(MAIL_TO)
 	->subject('From symfony/mailer')
 	->text('Through SMTP mailbox.')
 	// ->html('<p>Through <b>SMTP</b> <u>mailbox</u>.</p>')
 ;
+dump($email->toString());
 
 try {
 	$mailer->send($email);
