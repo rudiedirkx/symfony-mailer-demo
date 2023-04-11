@@ -3,7 +3,18 @@
     "type": "project",
     "require": {
         "symfony/mailer": "^6.0",
-        "symfony/var-dumper": "^6.0"
+        "symfony/var-dumper": "^6.0",
+        "google/apiclient": "^2.13"
+    },
+    "scripts": {
+        "pre-autoload-dump": [
+            "Google\\Task\\Composer::cleanup"
+        ]
+    },
+    "extra": {
+        "google/apiclient-services": [
+            "Gmail"
+        ]
     },
     "authors": [
         {
