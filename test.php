@@ -35,8 +35,8 @@ $mailer = new Mailer($transport);
 // dd($mailer);
 
 $email = (new Email())
-	->from(new Address(MAIL_FROM ?: MAILBOX_USER, "Sf User"))
-	->sender(MAILBOX_USER)
+	->from(new Address(MAIL_FROM, "Sf User"))
+	->sender(MAIL_SENDER)
 	->replyTo(sprintf('u%d@d%d.com', rand(), rand()))
 	->to(MAIL_TO)
 	->subject('From symfony/mailer')
